@@ -348,7 +348,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"expression": {
-											"value": "@not(equals(length(activity('Get_Metadata_Child_Container').output.childitems),'0'))",
+											"value": "@greater(int(length(activity('Get_Metadata_Child_Container').output.childitems)),0)",
 											"type": "Expression"
 										},
 										"ifFalseActivities": [
