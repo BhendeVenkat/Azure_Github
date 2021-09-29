@@ -1,0 +1,32 @@
+{
+	"name": "DS_ABS_File_to_Folders_metadata_read",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Containerinfo.csv",
+				"container": "metadata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "sourcecontainernames",
+				"type": "String"
+			},
+			{
+				"name": "targetontainernames",
+				"type": "String"
+			}
+		]
+	}
+}

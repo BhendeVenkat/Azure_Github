@@ -1,0 +1,30 @@
+{
+	"name": "DS_ABS_SINK_CONTAINER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sinkfolder": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().sinkfolder",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

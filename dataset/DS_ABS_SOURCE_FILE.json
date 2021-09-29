@@ -1,0 +1,25 @@
+{
+	"name": "DS_ABS_SOURCE_FILE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcecontainer": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
