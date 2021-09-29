@@ -118,7 +118,7 @@
 								],
 								"ifTrueActivities": [
 									{
-										"name": "Copy_blob_blob_source_sink",
+										"name": "Copy_data_ABS_dync_source_sink",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
@@ -150,7 +150,7 @@
 												"formatSettings": {
 													"type": "DelimitedTextWriteSettings",
 													"quoteAllText": true,
-													"fileExtension": ".txt"
+													"fileExtension": ".csv"
 												}
 											},
 											"enableStaging": false,
@@ -165,11 +165,11 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "DS_ABS_SOURCE_FILE",
+												"referenceName": "DS_ABS_Source_name_dync",
 												"type": "DatasetReference",
 												"parameters": {
-													"sourcecontainer": {
-														"value": "@item.sourcecontainernames",
+													"sourcefolder": {
+														"value": "@item().sourcecontainernames",
 														"type": "Expression"
 													}
 												}
@@ -177,13 +177,10 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DS_ABS_SINK_CONTAINER",
+												"referenceName": "DS_ABS_SINKFOLDER_DYNC",
 												"type": "DatasetReference",
 												"parameters": {
-													"sinkfolder": {
-														"value": "@item().targetontainernames",
-														"type": "Expression"
-													}
+													"SINKFOLDER": "@item().targetontainernames"
 												}
 											}
 										]
