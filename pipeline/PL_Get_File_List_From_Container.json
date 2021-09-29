@@ -80,6 +80,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -117,7 +118,7 @@
 								],
 								"ifTrueActivities": [
 									{
-										"name": "Copy_blob_blob",
+										"name": "Copy_blob_blob_source_sink",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
@@ -168,7 +169,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"sourcecontainer": {
-														"value": "@item().sourcecontainernames",
+														"value": "@item.sourcecontainernames",
 														"type": "Expression"
 													}
 												}
@@ -180,7 +181,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"sinkfolder": {
-														"value": "@item().targetcontainernames",
+														"value": "@item().targetontainernames",
 														"type": "Expression"
 													}
 												}
