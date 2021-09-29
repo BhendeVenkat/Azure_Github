@@ -1,0 +1,9 @@
+{
+	"name": "bhedneengg2adfv2",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d93eaadf-975a-4776-b41d-f553c9da57af",
+		"tenantId": "2ae4b4cf-ca77-41b5-86ba-80fc5e7a39e3"
+	}
+}
