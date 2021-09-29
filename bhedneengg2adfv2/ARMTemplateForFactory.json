@@ -139,7 +139,7 @@
 										],
 										"ifTrueActivities": [
 											{
-												"name": "Copy_blob_blob_source_sink",
+												"name": "Copy_data_ABS_dync_source_sink",
 												"type": "Copy",
 												"dependsOn": [],
 												"policy": {
@@ -171,7 +171,7 @@
 														"formatSettings": {
 															"type": "DelimitedTextWriteSettings",
 															"quoteAllText": true,
-															"fileExtension": ".txt"
+															"fileExtension": ".csv"
 														}
 													},
 													"enableStaging": false,
@@ -186,11 +186,11 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "DS_ABS_SOURCE_FILE",
+														"referenceName": "DS_ABS_Source_name_dync",
 														"type": "DatasetReference",
 														"parameters": {
-															"sourcecontainer": {
-																"value": "@item.sourcecontainernames",
+															"sourcefolder": {
+																"value": "@item().sourcecontainernames",
 																"type": "Expression"
 															}
 														}
@@ -198,13 +198,10 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "DS_ABS_SINK_CONTAINER",
+														"referenceName": "DS_ABS_SINKFOLDER_DYNC",
 														"type": "DatasetReference",
 														"parameters": {
-															"sinkfolder": {
-																"value": "@item().targetontainernames",
-																"type": "Expression"
-															}
+															"SINKFOLDER": "@item().targetontainernames"
 														}
 													}
 												]
@@ -225,8 +222,8 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABS_File_to_Folders_metadata_read')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ABS_CHILD_CONTAINER')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ABS_SOURCE_FILE')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ABS_SINK_CONTAINER')]"
+				"[concat(variables('factoryId'), '/datasets/DS_ABS_Source_name_dync')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ABS_SINKFOLDER_DYNC')]"
 			]
 		},
 		{
@@ -383,6 +380,76 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ABS_Source_name_dync')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AZB",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"sourcefolder": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": {
+							"value": "@dataset().sourcefolder",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AZB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ABS_SINKFOLDER_DYNC')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AZB",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"SINKFOLDER": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": {
+							"value": "@dataset().SINKFOLDER",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AZB')]"
+			]
 		}
 	]
 }
