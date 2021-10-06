@@ -17,21 +17,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"additionalColumns": [
-							{
-								"name": "Row_Load_dt",
-								"value": {
-									"value": "@utcnow()",
-									"type": "Expression"
-								}
-							}
-						],
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete from  dbo.employees_full where empid=2\n\ndelete from  dbo.employees_full where empid=4\n ",
+						"preCopyScript": "truncate table dbo.employees_full ",
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
