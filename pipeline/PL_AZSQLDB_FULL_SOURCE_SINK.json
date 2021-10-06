@@ -31,6 +31,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
+						"preCopyScript": "delete from  dbo.employees_full where empid=2\n\ndelete from  dbo.employees_full where empid=4\n ",
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
