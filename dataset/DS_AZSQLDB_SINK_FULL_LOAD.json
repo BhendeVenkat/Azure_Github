@@ -1,0 +1,16 @@
+{
+	"name": "DS_AZSQLDB_SINK_FULL_LOAD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EMPLOYEES_FULL"
+		}
+	}
+}
