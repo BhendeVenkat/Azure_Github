@@ -1,0 +1,37 @@
+{
+	"name": "ds_sink_multiple_tables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azblob_sink",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sink_container_name": {
+				"type": "string"
+			},
+			"sink_file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().sink_file_name",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().sink_container_name",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
