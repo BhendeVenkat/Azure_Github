@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "PL_Move_Multi_Tab_CSV_files_Lookup_Foreach_Web-LogicApp",
 	"properties": {
 		"activities": [
 			{
