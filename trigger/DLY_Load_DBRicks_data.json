@@ -2,7 +2,7 @@
 	"name": "DLY_Load_DBRicks_data",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipeline": {
 			"pipelineReference": {
 				"referenceName": "PL_Databricks_CopyData_Geb2_Raw_to_Processed",
