@@ -56,7 +56,7 @@
 					{
 						"activity": "bhedneengg9_Notebook",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
