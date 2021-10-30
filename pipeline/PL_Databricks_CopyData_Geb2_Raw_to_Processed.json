@@ -48,6 +48,49 @@
 					"referenceName": "LS_AzureDatabricks_workspace",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Log_Stored procedure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "bhedneengg9_Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[note_book_log_USP]",
+					"storedProcedureParameters": {
+						"messagename": {
+							"value": {
+								"value": "@activity('bhedneengg9_Notebook').output.runError",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"rundetails": {
+							"value": {
+								"value": "@activity('bhedneengg9_Notebook').output.runPageUrl",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"variables": {
