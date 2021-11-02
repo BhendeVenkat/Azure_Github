@@ -1,0 +1,30 @@
+{
+	"name": "DS_EMP_DEPT_JOIN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSqlDatabase_SCD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EMP_ID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "EMPLOYEE_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "dept_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "JOIN_EMP_DEPT"
+		}
+	}
+}
