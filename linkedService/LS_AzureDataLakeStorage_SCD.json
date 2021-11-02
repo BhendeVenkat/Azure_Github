@@ -1,0 +1,12 @@
+{
+	"name": "LS_AzureDataLakeStorage_SCD",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://bhendeengg9gen2.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDE4OTM0QzY0LUUyMEMtNEY5OS1BMTM0LURFM0MyRUE1NjBBMF9mMGQ3ZjhlOS1lMGMzLTQwZjctYmM1My02ZjE0NTA2ODMxMjgiDQp9"
+		}
+	}
+}
