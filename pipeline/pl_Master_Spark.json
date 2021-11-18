@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "pl_Master_Pipeline_Spark",
+				"name": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
@@ -12,7 +12,7 @@
 						"referenceName": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": false
+					"waitOnCompletion": true
 				}
 			},
 			{
@@ -20,7 +20,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "pl_Master_Pipeline_Spark",
+						"activity": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
 						"dependencyConditions": [
 							"Succeeded"
 						]
