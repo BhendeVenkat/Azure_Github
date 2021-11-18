@@ -22,7 +22,7 @@
 					{
 						"activity": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -42,7 +42,7 @@
 					{
 						"activity": "pl_CSV_TO_JSON",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
