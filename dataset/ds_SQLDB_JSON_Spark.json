@@ -1,0 +1,16 @@
+{
+	"name": "ds_SQLDB_JSON_Spark",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_Azure_SQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "updatedcpurses"
+		}
+	}
+}

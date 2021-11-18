@@ -1,0 +1,35 @@
+{
+	"name": "ds_JSON_ADLS_GEN2_Spark",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS_GEN2_CSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "output",
+				"fileSystem": "global"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"CID": {
+					"type": "string"
+				},
+				"CNAME": {
+					"type": "string"
+				},
+				"CSTARTDATE": {
+					"type": "string"
+				},
+				"Instituture": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
