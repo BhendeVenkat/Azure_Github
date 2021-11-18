@@ -24,6 +24,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"userProperties": [],
@@ -40,9 +46,15 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
+						"activity": "Wait_after_json_updatedcourse_sqldb",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
 						"activity": "pl_CSV_TO_JSON",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -68,7 +80,23 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 60
+					"waitTimeInSeconds": 100
+				}
+			},
+			{
+				"name": "Wait_after_json_updatedcourse_sqldb",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "pl_CSV_TO_JSON",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 100
 				}
 			}
 		],
