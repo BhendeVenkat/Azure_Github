@@ -2,7 +2,7 @@
 	"name": "TRG_Daily_CSV_TO_JSON_SQLDB_LOAD",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
