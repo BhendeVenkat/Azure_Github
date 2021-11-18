@@ -20,9 +20,9 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
+						"activity": "Wait_after_copy_csv",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -53,6 +53,22 @@
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Wait_after_copy_csv",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "pl_SQLDB_TO_ADLSGEN2_AS_CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 60
 				}
 			}
 		],
